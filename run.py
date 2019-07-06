@@ -16,7 +16,8 @@ sim.setConfiguration({
 		"HEIGHT": 10,
 		"MARGIN": 1,
 		"LENGTH": 70,
-		"CHANCE_OF_INFECTION": 0.5
+		"CHANCE_OF_INFECTION_RED": 0.062,
+		"CHANCE_OF_INFECTION_BLUE": 0.05
 	})
 
 sim.start()
