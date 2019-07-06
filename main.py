@@ -1,11 +1,13 @@
 
 import pygame
 import random
+import time
 
 # Define some colors
 BLACK = (0, 0, 0)
 BLUE = [(51, 51, 255), (0, 0, 255), (0, 0, 204), (0, 0, 153), (0, 0, 102)] # Five different blues, from light to dark.
 RED = [(255, 51, 51), (255, 0, 0), (204, 0, 0), (153, 0, 0), (102, 0, 0)] # Five different reds, from light to dark.
+YELLOW = (255,255,0)
 
  
 # This sets the WIDTH and HEIGHT of each grid location
@@ -60,8 +62,15 @@ clock = pygame.time.Clock()
 #Initial infection of the grid
 for row in range(numberOfRows):
     for column in range(round(numberOfColumns)):
-        if random.random() <= 0.5:
+        if (column % 2 == 0 and row % 2 == 0):
             grid[row][column] = 1
+        elif(column % 2 != 0 and row % 2 != 0):
+            grid[row][column] = 0
+        else:
+            if random.random() <= 0.5:
+                grid[row][column] = 1
+            else:
+                grid[row][column] = 0
 
 #Set the age of all cells at 121
 for row in range(numberOfRows):
@@ -70,17 +79,39 @@ for row in range(numberOfRows):
 
 #Count the neigbouring cells of the same type for a given cell.
 def countNeighboursOfSameType(row, column, type):
-    neighbours = [grid[row+1][column], grid[row-1][column], grid[row][column+1], grid[row][column-1], grid[row+1][column+1], grid[row-1][column-1]]
+    neighbours = [grid[row+1][column], grid[row-1][column], grid[row][column+1], grid[row][column-1], grid[row+1][column+1], grid[row-1][column-1], grid[row-1][column+1], grid[row+1][column-1]]
 
     return neighbours.count(type)
 
+def alterCellCluster(row, column, type):
+    grid[row][column] = type
+    grid[row+1][column+1] = type
+    grid[row-1][column-1] = type
+    grid[row][column+1] = type
+    grid[row][column-1] = type
+    grid[row+1][column] = type
+    grid[row-1][column] = type
+    grid[row-1][column+1] = type
+    grid[row+1][column-1] = type
+
+    return type;
+
 # -------- Main Program Loop -----------
 while not done:
+
+    #Check events
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            position = pygame.mouse.get_pos()
+            column = round(position[0] / (WIDTH + MARGIN))
+            row = round(position[1] / (HEIGHT + MARGIN))
+            if grid[row][column] == 1:
+                alterCellCluster(row,column,0)
+            else:
+                alterCellCluster(row,column,1)
 
- 
     # Set the screen background
     screen.fill(BLACK)
 
@@ -94,7 +125,7 @@ while not done:
 
                 #Infect
                 if countNeighboursOfSameType(row, column, 1) != 0:
-                    chanceOfInfection = 0.059*countNeighboursOfSameType(row, column, 1)
+                    chanceOfInfection = 0.063*countNeighboursOfSameType(row, column, 1)
                     if random.random() <= chanceOfInfection:
                         grid[row][column] = 1
 
@@ -148,6 +179,7 @@ while not done:
 
 
     pygame.display.flip()
+    time.sleep(1)
  
 
 pygame.quit()

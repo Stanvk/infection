@@ -1,10 +1,14 @@
-import pygame
-import random
-import time
 import Simulation
 
+"""
+	Make an instance of the simulation class.
+"""
 sim = Simulation.Simulation()
 
+
+"""
+	Parse configuration variables through.
+"""
 sim.setConfiguration({
 		"COLORS" : {
 			"BLACK": (0, 0, 0),
@@ -17,7 +21,12 @@ sim.setConfiguration({
 		"MARGIN": 1,
 		"LENGTH": 70,
 		"CHANCE_OF_INFECTION_RED": 0.062,
-		"CHANCE_OF_INFECTION_BLUE": 0.05
+		"CHANCE_OF_INFECTION_BLUE": 0.05,
+		"ROWS": 71,
+		"COLUMNS": 71
 	})
 
+"""
+	Run the simulation.
+"""
 sim.start()
