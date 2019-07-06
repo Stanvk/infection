@@ -110,14 +110,13 @@ while not done:
         for column in range(numberOfRows):
             # color = WHITE
             if grid[row][column] == 1:
-                color = RED[determineColorAge(ageOfCells[row][column])]
+                color = RED[0]
             pygame.draw.rect(screen,
                              color,
                              [(MARGIN + WIDTH) * column + MARGIN,
                               (MARGIN + HEIGHT) * row + MARGIN,
                               WIDTH,
                               HEIGHT])
-            # Go ahead and update the screen with what we've drawn.
 
     pygame.display.flip()            
  
