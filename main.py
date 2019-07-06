@@ -13,7 +13,7 @@ WIDTH = 10
 HEIGHT = 10
 MARGIN = 1
 
-numberOfRows = 71
+numberOfRows = 76
 numberOfColumns = numberOfRows
 
 windowsWidth = (MARGIN+WIDTH)*numberOfColumns
@@ -94,7 +94,7 @@ while not done:
 
                 #Infect
                 if countNeighboursOfSameType(row, column, 1) != 0:
-                    chanceOfInfection = 0.06*countNeighboursOfSameType(row, column, 1)
+                    chanceOfInfection = 0.059*countNeighboursOfSameType(row, column, 1)
                     if random.random() <= chanceOfInfection:
                         grid[row][column] = 1
 
