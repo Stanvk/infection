@@ -1,5 +1,6 @@
 import pygame
 import Cell
+import random
 
 
 """
@@ -9,7 +10,6 @@ import Cell
 	different components and starting the 'master loop'.
 """
 class Simulation(object):
-
 
 	"""
 		Constructor.
@@ -29,15 +29,19 @@ class Simulation(object):
 		Start the simulation.
 	"""
 	def start(self):
+		self._setGrid()
 		self._initialisePygame()
 		self.screen = self._initialiseGraphics(self.configuration["WIDTH"], self.configuration["HEIGHT"], self.configuration["MARGIN"])
-		self._initialiseGrid(self.getGrid(), self.configuration["ROWS"], self.configuration["COLUMNS"])
+		self._initialiseGrid(self.configuration["ROWS"], self.configuration["COLUMNS"])
 
 	"""
 		Return the simulation grid.
 	"""
 	def getGrid(self):
 		return self.grid
+
+	def _setGrid(self):
+		self.grid = []
 
 	"""
 		Initialise Pygame.
@@ -57,15 +61,18 @@ class Simulation(object):
 	"""
 		Initialise the Grid and initiate new cell objects for each cell.
 	"""
-	def _initialiseGrid(self,grid, numberOfRows, numberOfColumns):
+	def _initialiseGrid(self, numberOfRows, numberOfColumns):
 		for row in range(numberOfRows):
-			# Add an empty array that will hold each cell
-			# in this row
 			self.grid.append([])
 			for column in range(numberOfColumns):
-				self.grid[row].append(0)  # Append a cell
-				type = (0, 1)[random.random() <= 0.5]
-				self.grid[row][column] = Cell.Cell(row, column, 121, type)
+				self.grid[row].append(0)
+				self.grid[row][column] = Cell.Cell(row, column, 121, self.__getRandomType())
+	"""
+		Generates a pseudo-random type.
+	"""
+	def __getRandomType(self):
+		type = (0, 1)[random.random() <= 0.5]
 
+		return type
 
 
