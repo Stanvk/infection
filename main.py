@@ -62,17 +62,12 @@ clock = pygame.time.Clock()
 #Initial infection of the grid
 for row in range(numberOfRows):
     for column in range(round(numberOfColumns)):
-        if (column % 2 == 0 and row % 2 == 0):
-            grid[row][column] = 1
-        elif(column % 2 != 0 and row % 2 != 0):
-            grid[row][column] = 0
-        else:
             if random.random() <= 0.5:
                 grid[row][column] = 1
             else:
                 grid[row][column] = 0
 
-#Set the age of all cells at 121
+#Set the age of all cells to 121
 for row in range(numberOfRows):
     for column in range(numberOfColumns):
         ageOfCells[row][column] = 121
@@ -179,7 +174,6 @@ while not done:
 
 
     pygame.display.flip()
-    time.sleep(1)
  
 
 pygame.quit()
