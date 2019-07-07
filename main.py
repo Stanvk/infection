@@ -90,6 +90,8 @@ def alterCellCluster(row, column, type):
     grid[row+1][column-1] = type
 
     return type;
+infectionBaseChance = 0.063
+disinfectionBaseChance = 0.05
 
 # -------- Main Program Loop -----------
 while not done:
@@ -106,6 +108,12 @@ while not done:
                 alterCellCluster(row,column,0)
             else:
                 alterCellCluster(row,column,1)
+        if event.type == pygame.KEYDOWN:
+            if pygame.key.get_pressed()[pygame.K_1]:
+                infectionBaseChance = infectionBaseChance + 0.01
+            if pygame.key.get_pressed()[pygame.K_2]:
+                infectionBaseChance = infectionBaseChance - 0.01
+
 
     # Set the screen background
     screen.fill(BLACK)
@@ -120,13 +128,13 @@ while not done:
 
                 #Infect
                 if countNeighboursOfSameType(row, column, 1) != 0:
-                    chanceOfInfection = 0.063*countNeighboursOfSameType(row, column, 1)
+                    chanceOfInfection = infectionBaseChance*countNeighboursOfSameType(row, column, 1)
                     if random.random() <= chanceOfInfection:
                         grid[row][column] = 1
 
                 #disinfect
                 if countNeighboursOfSameType(row, column, 0) != 0:
-                    chanceOfDisinfection = 0.05*countNeighboursOfSameType(row, column, 0);
+                    chanceOfDisinfection = disinfectionBaseChance*countNeighboursOfSameType(row, column, 0);
                     if random.random() <= chanceOfDisinfection:
                         grid[row][column] = 0
 
