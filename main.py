@@ -79,15 +79,9 @@ def countNeighboursOfSameType(row, column, type):
     return neighbours.count(type)
 
 def alterCellCluster(row, column, type):
-    grid[row][column] = type
-    grid[row+1][column+1] = type
-    grid[row-1][column-1] = type
-    grid[row][column+1] = type
-    grid[row][column-1] = type
-    grid[row+1][column] = type
-    grid[row-1][column] = type
-    grid[row-1][column+1] = type
-    grid[row+1][column-1] = type
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            grid[row + i][column + j] = type
 
     return type;
 infectionBaseChance = 0.063
@@ -182,6 +176,7 @@ while not done:
 
 
     pygame.display.flip()
+    time.sleep(1)
  
 
 pygame.quit()
