@@ -3,7 +3,7 @@ Pygame draws an n by n matrix of rectangles. Each individual cell can be infecte
 
 ## Requirements
 * Python
-* Pygame
+* Pygame (Easily installed by using Python's package manager: `pip install pygame`.)
 
 ## Getting Started
 When both Python and pygame are installed, just run
