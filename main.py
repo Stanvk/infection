@@ -176,7 +176,6 @@ while not done:
 
 
     pygame.display.flip()
-    time.sleep(1)
  
 
 pygame.quit()

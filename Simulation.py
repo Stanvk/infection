@@ -62,10 +62,9 @@ class Simulation(object):
 		Initialise graphics and set window height, width and title.
 	"""
 	def _initialiseGraphics(self, width, height, margin):
-		window = [width, height]
 		pygame.display.set_caption("Random Infection - by stanvk")
 
-		return pygame.display.set_mode(window)
+		return pygame.display.set_mode([width, height])
 
 	"""
 		Initialise the Grid and initiate new cell objects for each cell.

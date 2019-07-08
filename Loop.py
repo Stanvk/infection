@@ -1,4 +1,5 @@
 import time
+import pygame
 
 class Loop(object):
     def __init__(self, configuration, screen):
@@ -15,5 +16,13 @@ class Loop(object):
 
     def __loop(self):
         while self.done == False:
-            screen.fill(BLACK)
+
+            self.__listenForEvents()
+
+            self.screen.fill(self.configuration["COLOURS"]["BLACK"])
             pygame.display.flip()
+
+    def __listenForEvents(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.stopLoop()
