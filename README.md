@@ -1,2 +1,12 @@
-# Infection: Red VS Blue
-![infection](https://previews.dropbox.com/p/thumb/AAf_BLJxXyeCD-55YAV_joGQoKRgAvLkUzB5Bf238zNuWCFuNcPb8ty44cbfCnRYr2VUIiaXFSkUDwdmLFwiV7h48XZPASw5kqvplcxIYwagjBtbQssFpzXtYRqq1Rbmb59TC7VEUGAqKBGgZ76Za69UrN-7WsQhuTkM9K7PeEhmIJL7LLmYYAGZjf04OZOoyccghBLc8AaXiXljMz03yaZTTgOOrC4inamUp7G_G_cleaC9EdU7aaxxohYfIAZjkpvq4LOEZ4OXrnMLnDlzhhvvVG_53It_ZIDMs_-scSnRWDGyVGNmAc9m2eMHbcPKlpiGXN1DX1drfEetWGfUBAKi/p.png?size=2048x1536&size_mode=3)
+# Simple Infection Simulation
+Pygame draws an n by n matrix of rectangles. Each individual cell can be infected by infected neighbours, disinfected cells have a chance to heal neighbouring infected cells. Tweaking the code yield different patterns.
+
+## Requirements
+* Python
+* Pygame
+
+## Getting Started
+When both Python and pygame are installed, just run ~~`run.py`~~ `main.py`.
+
+## How does it work?
+* WIP
