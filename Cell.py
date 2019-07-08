@@ -1,3 +1,9 @@
+
+"""
+	The Cell class.
+	-----------------------------
+	Each cell in the n by n grid is an instance of this class.
+"""
 class Cell(object):
 
     """
