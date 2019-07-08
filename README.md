@@ -9,7 +9,8 @@ Pygame draws an n by n matrix of rectangles. Each individual cell can be infecte
 When both Python and pygame are installed, just run
 `python3 main.py` or `python main.py`, depending on your installation.
 
+### Interaction
 One can interact with the cells by clicking on them. Clicking on a cell will yield the cell and its surrounding cells infected when the cells are disinfected and vice versa.
 
 ## Work in progress
-The `main.py` procedural variant of the simulation is a mess, so everything will object-orientated soon.
+The `main.py` procedural variant of the simulation is a mess, so everything will be object-orientated soon.
